@@ -58,11 +58,11 @@ public class EmployeeController {
     public R<String> save(HttpServletRequest request,@RequestBody Employee employee){
         log.info("新增员工，员工信息:{}",employee.toString());
         employee.setPassword(DigestUtils.md5DigestAsHex("123456".getBytes()));
-        employee.setCreateTime(LocalDateTime.now());
-        employee.setUpdateTime(LocalDateTime.now());
-        Long empId= (Long) request.getSession().getAttribute("employee");
-employee.setCreateUser(empId);
-employee.setUpdateUser(empId);
+        //employee.setCreateTime(LocalDateTime.now());
+        //employee.setUpdateTime(LocalDateTime.now());
+        //Long empId= (Long) request.getSession().getAttribute("employee");
+//employee.setCreateUser(empId);
+//employee.setUpdateUser(empId);
 employeeService.save(employee);
         return R.success("新增员工成功");
     }
@@ -86,9 +86,9 @@ public R<Page> page(int  page, int pageSize,String name ){
 }
 @PutMapping
     public R<String> update(HttpServletRequest request,@RequestBody Employee employee){
-    Long empId = (Long) request.getSession().getAttribute("employee");
-    employee.setUpdateTime(LocalDateTime.now());
-    employee.setUpdateUser(empId);
+    //Long empId = (Long) request.getSession().getAttribute("employee");
+    //employee.setUpdateTime(LocalDateTime.now());
+    //employee.setUpdateUser(empId);
     employeeService.updateById(employee);
     return R.success("员工信息修改成功");
 }
